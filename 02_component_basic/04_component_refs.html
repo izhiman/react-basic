@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>组件refs属性</title>
+    <script src="../jslib/react.development.js"></script>
+    <script src="../jslib/react-dom.development.js"></script>
+    <script src="../jslib/babel.min.js"></script>
+    <script src="../jslib/prop-types.js"></script>
+</head>
+<body>
+<div id="lid"></div>
+<script type="text/babel">
+    // 定义组件
+    class MC extends React.Component {
+        constructor(props) {
+            super(props);
+            this.handleInput = this.handleInput.bind(this);
+            this.handleBlur = this.handleBlur.bind(this);
+        }
+
+        handleInput() {
+            // const input = this.refs.content;
+            //   alert(input.value)
+            alert(this.input.value)
+        }
+
+        handleBlur(event) {
+            alert(event.target.value)
+        }
+
+        render() {
+            return (
+                <div>
+                    <input type="text" ref="content"/>&nbsp;&nbsp;
+                    <input type="text" ref={input => this.input = input}/>&nbsp;&nbsp;
+                    <button onClick={this.handleInput}>请输入数据</button>
+                    &nbsp;&nbsp;
+                    <input type="text" placeholder="失去焦点提示内容" onBlur={this.handleBlur}/>
+                </div>
+            )
+        }
+    }
+
+    ReactDOM.render(<MC/>, document.getElementById('lid'));
+
+</script>
+</body>
+</html>
+

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>动态展示数据列表</title>
+    <script src="../jslib/react.development.js"></script>
+    <script src="../jslib/react-dom.development.js"></script>
+    <script src="../jslib/babel.min.js"></script>
+</head>
+<body>
+<div id="list"></div>
+<script type="text/babel">
+    const names = ["React", "Vue", "JQuery", "BootStrap"];
+    // 创建虚拟dom
+    const ultag = (<ul>
+        {names.map((name, index) => <li key={index}>{name}</li>)}
+    </ul>);
+    ReactDOM.render(ultag, document.getElementById('list'))
+
+</script>
+</body>
+</html>

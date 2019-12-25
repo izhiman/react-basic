@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>jsx</title>
+    <script src="../jslib/react.development.js"></script>
+    <script src="../jslib/react-dom.development.js"></script>
+    <script src="../jslib/babel.min.js"></script>
+</head>
+<body>
+<div id="test1"></div>
+<div id="test2"></div>
+
+<script type="text/javascript">
+    const msg = "I like you";
+    const mid = "ZhimanMa";
+    // 1.创建虚拟DOM
+    const h2tag = React.createElement('h2', {id: mid.toLowerCase()}, msg.toUpperCase());
+    debugger;
+    // 2.渲染原始DOM
+    ReactDOM.render(h2tag, document.getElementById("test1"));
+</script>
+
+<script type="text/babel">
+    // 1.创建虚拟DOM
+    const h3tag = <h3 id={mid.toUpperCase()}>{msg.toLowerCase()}</h3>;
+    debugger;
+
+    // 2.渲染原始DOM
+    ReactDOM.render(h3tag, document.getElementById("test2"));
+</script>
+</body>
+</html>
+

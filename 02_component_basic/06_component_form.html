@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>组件表单</title>
+    <script src="../jslib/react.development.js"></script>
+    <script src="../jslib/react-dom.development.js"></script>
+    <script src="../jslib/babel.min.js"></script>
+    <script src="../jslib/prop-types.js"></script>
+</head>
+<body>
+
+<div id="xx"></div>
+
+<script type="text/babel">
+    /**
+     * 参考：https://react.docschina.org/docs/uncontrolled-components.html
+     */
+
+    class LoginForm extends React.Component {
+        constructor(props) {
+            super(props);
+            this.state = {
+                pwd: ''
+            };
+            this.handleSubmit = this.handleSubmit.bind(this);
+            this.handleChange = this.handleChange.bind(this);
+        }
+
+
+        handleSubmit(event) {
+
+            alert(`name : ${this.inputName.value}  pwd : ${this.state.pwd}`);
+            // 阻止事件默认行为
+            event.preventDefault();
+        }
+
+        handleChange(event) {
+            const pwd = event.target.value;
+            this.setState({pwd})
+        }
+
+        // 两种收集表单数据的方式，受控组件和非受控组件
+        // 前者自动收集数据，如pwd，后者需要时手动收集数据 :如name
+        render() {
+            return (
+                <form action="05_component_combination.html" onSubmit={this.handleSubmit}>
+                    用户名：<input type="text" ref={input => this.inputName = input}/>&nbsp;
+                    密码：<input type="password" value={this.state.pwd} onChange={this.handleChange}/>&nbsp;
+                    <input type="submit" value="提交"/>
+                </form>
+            )
+        }
+    }
+
+    // 渲染标签
+    ReactDOM.render(<LoginForm/>, document.getElementById("xx"));
+</script>
+</body>
+</html>

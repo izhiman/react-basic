@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>React组件的基本定义和使用</title>
+    <script src="../jslib/react.development.js"></script>
+    <script src="../jslib/react-dom.development.js"></script>
+    <script src="../jslib/babel.min.js"></script>
+</head>
+<body>
+<div id="xxx"></div>
+<div id="xxxx"></div>
+
+<script type="text/babel">
+    // 1.定义组件
+    // 工厂函数组件（简单组件，没有状态的组件）
+    function CustomComponent() {
+        // 返回虚拟DOM标签
+        return <h2>工厂函数组件（简单组件）:返回虚拟DOM标签</h2>
+    }
+
+    // 2. ES6类组件(复杂组件)
+    class CustomComponent2 extends React.Component {
+        render() {
+            console.log(this)
+            return <h2>ES6类组件(复杂组件)</h2>
+        }
+    }
+
+    // 2.渲染组件标签
+    ReactDOM.render(<CustomComponent/>, document.getElementById('xxx'));
+    ReactDOM.render(<CustomComponent2/>, document.getElementById('xxxx'));
+
+</script>
+</body>
+</html>
